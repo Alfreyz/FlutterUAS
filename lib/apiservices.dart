@@ -18,13 +18,44 @@ class ApiServices{
       return null;
     }
   }
-  Future<List<news>?> getnewscat(String category) async{
-    final response = await client.get(Uri.parse("$baseUrl/news/{category}"));
+  Future<List<news>?> getnewstekn() async{
+    final response = await client.get(Uri.parse("$baseUrl/news/Teknologi"));
     if (response.statusCode == 200){
       return newsFromJson(response.body);
     } else {
       return null;
     }
   }
-
+  Future<List<news>?> getnewsbisnis() async{
+    final response = await client.get(Uri.parse("$baseUrl/news/Bisnis"));
+    if (response.statusCode == 200){
+      return newsFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+  Future<List<news>?> getnewshiburan() async{
+    final response = await client.get(Uri.parse("$baseUrl/news/Hiburan"));
+    if (response.statusCode == 200){
+      return newsFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+  Future<List<news>?> getnewskesehatan() async{
+    final response = await client.get(Uri.parse("$baseUrl/news/Kesehatan"));
+    if (response.statusCode == 200){
+      return newsFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+  Future<List<news>?> getnewsolahraga() async{
+    final response = await client.get(Uri.parse("$baseUrl/news/Olahraga"));
+    if (response.statusCode == 200){
+      return newsFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
 }

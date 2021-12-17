@@ -110,7 +110,7 @@ class _newskategorikesehatan extends State<newskategorikesehatan> {
         ),
 
         body: FutureBuilder<List<news>?>(
-          future:ApiServices().getnewscat("Kesehatan"),
+          future:ApiServices().getnewskesehatan(),
           builder: (BuildContext context, AsyncSnapshot<List<news>?> snapshot){
             if(snapshot.hasError){
               return Center(
