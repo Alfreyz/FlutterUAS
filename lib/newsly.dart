@@ -8,17 +8,16 @@ import 'package:flutteruas/newskategorihiburan.dart';
 import 'package:flutteruas/newskategorikesehatan.dart';
 import 'package:flutteruas/newskategoriolahraga.dart';
 import 'package:flutteruas/newskategoritekn.dart';
-import 'package:flutteruas/newsly.dart';
 
-class newsdashboard extends StatefulWidget {
-  const newsdashboard({Key? key, required this.title}) : super(key: key);
+class newsly extends StatefulWidget {
+  const newsly({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<newsdashboard> createState() => _newsdashboard();
+  State<newsly> createState() => _newsly();
 }
 
-class _newsdashboard extends State<newsdashboard> {
+class _newsly extends State<newsly> {
   final _formKey = GlobalKey<FormState>();
 
   List<news> ln = <news>[];
@@ -109,7 +108,6 @@ class _newsdashboard extends State<newsdashboard> {
             ],
           ),
         ),
-
         body: FutureBuilder<List<news>?>(
           future:ApiServices().getnews(),
           builder: (BuildContext context, AsyncSnapshot<List<news>?> snapshot){
@@ -126,7 +124,7 @@ class _newsdashboard extends State<newsdashboard> {
                     margin: new EdgeInsets.symmetric(horizontal: 5.0,vertical: 1.0),
                     child: Container(
                         child :ListTile(
-                          title: Text(ln[position].tittle + " - " + ln[position].origin +  " - " +ln[position].descriptio ),
+                          title: Text(ln[position].tittle + " - " + ln[position].origin +  " - " +ln[position].descriptio),
                           subtitle: Text(ln[position].date),
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(ln[position].url_img),
@@ -146,7 +144,7 @@ class _newsdashboard extends State<newsdashboard> {
                                 )
                             );
                           },
-                        ),
+                        )
                     ),
                   );
                 },

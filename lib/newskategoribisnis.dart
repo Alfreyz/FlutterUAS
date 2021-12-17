@@ -3,22 +3,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutteruas/apiservices.dart';
 import 'package:flutteruas/model.dart';
-import 'package:flutteruas/newskategoribisnis.dart';
 import 'package:flutteruas/newskategorihiburan.dart';
 import 'package:flutteruas/newskategorikesehatan.dart';
 import 'package:flutteruas/newskategoriolahraga.dart';
 import 'package:flutteruas/newskategoritekn.dart';
 import 'package:flutteruas/newsly.dart';
 
-class newsdashboard extends StatefulWidget {
-  const newsdashboard({Key? key, required this.title}) : super(key: key);
+class newskategoribisnis extends StatefulWidget {
+  const newskategoribisnis({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<newsdashboard> createState() => _newsdashboard();
+  State<newskategoribisnis> createState() => _newskategoribisnis();
 }
 
-class _newsdashboard extends State<newsdashboard> {
+class _newskategoribisnis extends State<newskategoribisnis> {
   final _formKey = GlobalKey<FormState>();
 
   List<news> ln = <news>[];
@@ -111,7 +110,7 @@ class _newsdashboard extends State<newsdashboard> {
         ),
 
         body: FutureBuilder<List<news>?>(
-          future:ApiServices().getnews(),
+          future:ApiServices().getnewscat("Bisnis"),
           builder: (BuildContext context, AsyncSnapshot<List<news>?> snapshot){
             if(snapshot.hasError){
               return Center(
@@ -125,28 +124,28 @@ class _newsdashboard extends State<newsdashboard> {
                   return Card(
                     margin: new EdgeInsets.symmetric(horizontal: 5.0,vertical: 1.0),
                     child: Container(
-                        child :ListTile(
-                          title: Text(ln[position].tittle + " - " + ln[position].origin +  " - " +ln[position].descriptio ),
-                          subtitle: Text(ln[position].date),
-                          leading: CircleAvatar(
-                            backgroundImage: NetworkImage(ln[position].url_img),
-                          ),
-                          onTap: () {
-                            showDialog(context: context,
-                                builder: (_) => AlertDialog(
-                                  content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Divider(
-                                        color: Colors.black,
-                                        height:20,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                            );
-                          },
+                      child :ListTile(
+                        title: Text(ln[position].tittle + " - " + ln[position].origin +  " - " +ln[position].descriptio ),
+                        subtitle: Text(ln[position].date),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(ln[position].url_img),
                         ),
+                        onTap: () {
+                          showDialog(context: context,
+                              builder: (_) => AlertDialog(
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Divider(
+                                      color: Colors.black,
+                                      height:20,
+                                    ),
+                                  ],
+                                ),
+                              )
+                          );
+                        },
+                      ),
                     ),
                   );
                 },
